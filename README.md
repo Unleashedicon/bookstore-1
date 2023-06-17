@@ -84,7 +84,7 @@ This calculator app is built using the following technologies and libraries:
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo 
-<br><br><a name="live-demo">Coming soon</a>
+<br><br><a name="live-demo">[live link](https://bookstore-2pk6.onrender.com/)</a>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
