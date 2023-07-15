@@ -32,8 +32,8 @@ const BookLogic = () => {
 
   return (
     <div>
-      <AddBook addBookItem={addBookItem} />
       <BookList books={books} delBook={delBook} />
+      <AddBook addBookItem={addBookItem} />
     </div>
   );
 };
