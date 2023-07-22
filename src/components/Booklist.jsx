@@ -5,7 +5,7 @@ import BookItem from './BookItem';
 const BookList = ({ books, delBook }) => (
   <ul>
     {books.map((book) => (
-      <BookItem key={book.id} book={book} delBook={delBook} />
+      <BookItem key={book.item_id} book={book} delBook={delBook} />
     ))}
   </ul>
 );
@@ -13,7 +13,7 @@ const BookList = ({ books, delBook }) => (
 BookList.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      item_id: PropTypes.string.isRequired, // Update to "item_id"
       title: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
     }),
