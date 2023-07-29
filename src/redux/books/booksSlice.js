@@ -48,35 +48,3 @@ const bookSlice = createSlice({
 export const { addBook, removeBook } = bookSlice.actions;
 
 export default bookSlice.reducer;
-Now the code should work correctly, and you can use the addBook and removeBook actions to add and remove book items from the Redux store's state.
-
-
-
-
-
-
-
-const bookSlice = createSlice({
-  name: 'book',
-  initialState,
-  reducers: {
-    addBook: (state, action) => {
-      state.bookItems = [
-        ...state.bookItems,
-        {
-          item_id: `item${uuidv4()}`,
-          title: action.payload.title,
-          author: action.payload.author,
-        },
-      ];
-    },
-    removeBook: (state, action) => {
-      const bookId = action.payload;
-      state.bookItems = state.bookItems.filter((item) => item.item_id !== bookId);
-    },
-  },
-});
-
-export const { addBook, removeBook } = bookSlice.actions;
-
-export default bookSlice.reducer;
