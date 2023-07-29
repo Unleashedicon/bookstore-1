@@ -7,6 +7,8 @@ const BookItem = ({ book, delBook }) => (
     {' '}
     -
     {book.author}
+    -
+    {book.category}
     <button onClick={() => delBook(book.item_id)} aria-label="Delete" type="button">
       Remove
     </button>
@@ -15,9 +17,10 @@ const BookItem = ({ book, delBook }) => (
 
 BookItem.propTypes = {
   book: PropTypes.shape({
-    item_id: PropTypes.string.isRequired, // Update to "item_id"
+    item_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
   }).isRequired,
   delBook: PropTypes.func.isRequired,
 };
