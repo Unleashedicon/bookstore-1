@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialState = {
-bookItems: [
+  bookItems: [
     {
       item_id: 'item1',
       title: 'The Great Gatsby',
