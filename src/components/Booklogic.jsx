@@ -1,34 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// booklogic.js
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBooks, addBook, removeBook } from '../redux/books/booksSlice';
 import AddBook from './Addbook';
 import BookList from './Booklist';
 
 const BookLogic = () => {
-  function getInitialBooks() {
-    const storedBooks = localStorage.getItem('books');
-    return storedBooks ? JSON.parse(storedBooks) : [];
-  }
-
-  const [books, setBooks] = useState(getInitialBooks());
-
-  const delBook = (id) => {
-    setBooks(books.filter((book) => book.id !== id));
-  };
-
-  const addBookItem = (title, author) => {
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-    };
-    setBooks([...books, newBook]);
-  };
+  const books = useSelector((state) => state.book.bookItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('books', JSON.stringify(books));
-    }
-  }, [books]);
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const addBookItem = (itemId, title, author, category) => {
+    dispatch(addBook({
+      itemId,
+      title,
+      author,
+      category,
+    }))
+      .then(() => {
+        dispatch(fetchBooks());
+      })
+      .catch((error) => {
+        console.error('Failed to add book:', error);
+      });
+  };
+
+  const delBook = (itemId) => {
+    dispatch(removeBook(itemId))
+      .then(() => {
+        dispatch(fetchBooks());
+      })
+      .catch((error) => {
+        console.error('Failed to remove book:', error);
+      });
+  };
 
   return (
     <div>
